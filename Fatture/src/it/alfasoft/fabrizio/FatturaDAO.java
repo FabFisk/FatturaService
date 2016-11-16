@@ -8,7 +8,6 @@ import java.util.TreeMap;
 public class FatturaDAO {
 	
 	private Map<String, FatturaModel> fatture;
-	private FatturaModel[] fatt;
 	
 	public FatturaDAO(){
 		fatture = new TreeMap<String, FatturaModel>();
@@ -30,11 +29,8 @@ public class FatturaDAO {
 	
 	public FatturaModel[] getFatture(){
 		List<FatturaModel> fatTemp = new ArrayList<FatturaModel>(fatture.values());
-		fatt = new FatturaModel[fatTemp.size()];
-		for(int i=0; i<fatTemp.size(); i++){
-			fatt[i] = fatTemp.get(i);
-		}
-		return fatt;
+		FatturaModel[] fatt = new FatturaModel[fatTemp.size()];
+		return fatTemp.toArray(fatt);
 	}
 
 }
