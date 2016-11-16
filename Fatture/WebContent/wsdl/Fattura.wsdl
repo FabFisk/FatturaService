@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://fabrizio.alfasoft.it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://fabrizio.alfasoft.it" xmlns:intf="http://fabrizio.alfasoft.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://fabrizio.alfasoft.it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getFatture">
+    <complexType/>
+   </element>
+   <element name="getFattureResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getFattureReturn" type="impl:FatturaModel"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FatturaModel">
+    <sequence>
+     <element name="codCliente" nillable="true" type="xsd:string"/>
+     <element name="ragSociale" nillable="true" type="xsd:string"/>
+     <element name="totale" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <element name="getFattura">
+    <complexType>
+     <sequence>
+      <element name="codice" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFatturaResponse">
+    <complexType>
+     <sequence>
+      <element name="getFatturaReturn" type="impl:FatturaModel"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getFattureResponse">
+
+      <wsdl:part element="impl:getFattureResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFattureRequest">
+
+      <wsdl:part element="impl:getFatture" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFatturaRequest">
+
+      <wsdl:part element="impl:getFattura" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFatturaResponse">
+
+      <wsdl:part element="impl:getFatturaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Fattura">
+
+      <wsdl:operation name="getFatture">
+
+         <wsdl:input message="impl:getFattureRequest" name="getFattureRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFattureResponse" name="getFattureResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFattura">
+
+         <wsdl:input message="impl:getFatturaRequest" name="getFatturaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFatturaResponse" name="getFatturaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FatturaSoapBinding" type="impl:Fattura">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getFatture">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFattureRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFattureResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFattura">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFatturaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFatturaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FatturaService">
+
+      <wsdl:port binding="impl:FatturaSoapBinding" name="Fattura">
+
+         <wsdlsoap:address location="http://localhost:8082/Fatture/services/Fattura"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

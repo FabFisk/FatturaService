@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FatturaService WSDL service -->
+
+  <service name="Fattura" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://fabrizio.alfasoft.it"/>
+      <parameter name="wsdlServiceElement" value="FatturaService"/>
+      <parameter name="schemaQualified" value="http://fabrizio.alfasoft.it"/>
+      <parameter name="wsdlServicePort" value="Fattura"/>
+      <parameter name="className" value="it.alfasoft.fabrizio.Fattura"/>
+      <parameter name="wsdlPortType" value="Fattura"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://fabrizio.alfasoft.it" xmlns:retNS="http://fabrizio.alfasoft.it" xmlns:rtns="http://fabrizio.alfasoft.it" name="getFatture" qname="operNS:getFatture" returnQName="retNS:getFattureReturn" returnType="rtns:FatturaModel" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://fabrizio.alfasoft.it" xmlns:retNS="http://fabrizio.alfasoft.it" xmlns:rtns="http://fabrizio.alfasoft.it" name="getFattura" qname="operNS:getFattura" returnQName="retNS:getFatturaReturn" returnType="rtns:FatturaModel" soapAction="">
+        <parameter xmlns:pns="http://fabrizio.alfasoft.it" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:codice" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getFatture getFattura"/>
+
+      <typeMapping xmlns:ns="http://fabrizio.alfasoft.it" qname="ns:FatturaModel" type="java:it.alfasoft.fabrizio.FatturaModel" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
